@@ -23,26 +23,17 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
-void f() {
-    int n, l, r;
-    cin >> n >> l >> r;
+void f()
+{
+    int l,a,b;
+    cin>>l>>a>>b;
 
-    vector<int> v(n+1);
-    v[0] = n + 1;
+    ll g = __gcd(l, b);
+    ll k = (l - 1 - a) / g;
+    ll ans = a + k * g;
 
-    for (int i = 1; i <=n; i++) {
-        if (i == r) v[i] = v[l - 1];
-        else v[i] = i;
-    }
-
-    for (int i = 1; i <= n; i++) {
-        cout << (v[i] ^ v[i - 1]) << " ";
-    }
-
-    cout<<"\n";
+    cout << ans << '\n';
 }
-
-
 
 int main()
 {

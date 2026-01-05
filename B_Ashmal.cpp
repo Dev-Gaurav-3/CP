@@ -23,25 +23,23 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
-void f() {
-    int n, l, r;
-    cin >> n >> l >> r;
+void f()
+{
+    int n;
+    cin >> n;
+    vector<string> v;
+    input(v, n);
+    string s = "";
+    for(int i = 0;i<n;i++){
+        string op1 = s + v[i];
+        string op2 = v[i] + s;
 
-    vector<int> v(n+1);
-    v[0] = n + 1;
-
-    for (int i = 1; i <=n; i++) {
-        if (i == r) v[i] = v[l - 1];
-        else v[i] = i;
+        s = min(op1,op2);
     }
 
-    for (int i = 1; i <= n; i++) {
-        cout << (v[i] ^ v[i - 1]) << " ";
-    }
+    cout<< s <<endl;
 
-    cout<<"\n";
 }
-
 
 
 int main()

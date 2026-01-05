@@ -23,26 +23,13 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
-void f() {
-    int n, l, r;
-    cin >> n >> l >> r;
+void f()
+{
+    int n,k;
+    cin>>n>>k;
 
-    vector<int> v(n+1);
-    v[0] = n + 1;
-
-    for (int i = 1; i <=n; i++) {
-        if (i == r) v[i] = v[l - 1];
-        else v[i] = i;
-    }
-
-    for (int i = 1; i <= n; i++) {
-        cout << (v[i] ^ v[i - 1]) << " ";
-    }
-
-    cout<<"\n";
+    cout<<(n*k)+1<<endl;
 }
-
-
 
 int main()
 {
