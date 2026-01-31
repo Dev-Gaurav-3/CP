@@ -25,25 +25,24 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    ll n,m,h;
-    cin >>n>>m>> h;
+    int n;
+    cin >> n;
 
-    vector<int> v;input(v,n);
-    map<int,int>mp;
-    while(m--){
-        int b,c;cin>>b>>c;
-        b--;
-        mp[b] += c;
-        if(v[b] + mp[b] > h) mp.clear();
-    }
+    int mid = (n + 1) / 2;
+    cout << mid << " ";
 
-    for (int i = 0; i < n; i++)
-    {
-        cout<< v[i] + mp[i] <<" ";
+    int l = mid - 1;
+    int r = mid + 1;
+
+    while (l >= 1 || r <= n) {
+        if (r <= n) cout << r << " ";
+        if (l >= 1) cout << l << " ";
+        r++;
+        l--;
     }
     cout<<endl;
 
-    
+    return ;
 }
 
 int main()

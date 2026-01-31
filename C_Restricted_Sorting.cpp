@@ -25,26 +25,35 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    ll n,m,h;
-    cin >>n>>m>> h;
+    int n;
+    cin >> n;
 
-    vector<int> v;input(v,n);
-    map<int,int>mp;
-    while(m--){
-        int b,c;cin>>b>>c;
-        b--;
-        mp[b] += c;
-        if(v[b] + mp[b] > h) mp.clear();
+    vector<ll> v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
     }
 
-    for (int i = 0; i < n; i++)
-    {
-        cout<< v[i] + mp[i] <<" ";
-    }
-    cout<<endl;
+    vector<ll> v1 = v;
+    sort(v1.begin(), v1.end());
 
-    
+    ll ans = LLONG_MAX;
+    int val = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (v[i] != v1[i]) {
+            val++;
+            ans = min(ans, max(v1[n - 1] - v[i], v[i] - v1[0]));
+        }
+    }
+
+
+    if (val == 0) {
+        cout << -1 << endl;
+    } else {
+        cout << ans << endl;
+    }
 }
+
 
 int main()
 {

@@ -25,26 +25,30 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    ll n,m,h;
-    cin >>n>>m>> h;
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
 
-    vector<int> v;input(v,n);
-    map<int,int>mp;
-    while(m--){
-        int b,c;cin>>b>>c;
-        b--;
-        mp[b] += c;
-        if(v[b] + mp[b] > h) mp.clear();
-    }
+        int ans = 0;
+        int f = 1;
 
-    for (int i = 0; i < n; i++)
-    {
-        cout<< v[i] + mp[i] <<" ";
-    }
-    cout<<endl;
+        for (int i = 0; i < n; i++) {
+            if (s[i] == '0') {
+                f++;
+            } else {
+                ans += f / 3; 
+                f = 0;
+                ans++;
+            }
+        }
 
-    
+        f++;
+        ans += f / 3;
+
+        cout << ans << endl;
 }
+
 
 int main()
 {

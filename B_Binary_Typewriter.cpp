@@ -25,25 +25,22 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    ll n,m,h;
-    cin >>n>>m>> h;
+    int n;cin>>n;
+    string s;
+    cin>>s;
 
-    vector<int> v;input(v,n);
-    map<int,int>mp;
-    while(m--){
-        int b,c;cin>>b>>c;
-        b--;
-        mp[b] += c;
-        if(v[b] + mp[b] > h) mp.clear();
-    }
+    int k=0;
+    char curr = '0';
 
     for (int i = 0; i < n; i++)
     {
-        cout<< v[i] + mp[i] <<" ";
+        if(curr != s[i]) k++;
+        curr = s[i];
+        
     }
-    cout<<endl;
-
-    
+    if(k>= 3) cout<< k - 2 + n<<endl;
+    else if (k == 2) cout<< k-1+n <<endl;
+    else cout<< k+n <<endl;
 }
 
 int main()
