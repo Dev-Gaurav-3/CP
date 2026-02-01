@@ -27,24 +27,23 @@ void f()
 {
     int n,q;
     cin>>n>>q;
-    vector<int>a,x;
+    vector<ll>a,x;
     input(a,n); 
     input(x,q);
-    
-    vector<int>evens_idx;
-    for (int i = 0;i<n;i++)
-    {
-        if(!(a[i]&1)) evens_idx.push_back(i);
-    }
+
+    int prev = 31;
     for (auto &&i : x)
     {
-        int power = pow(2,i);
-        for (auto &&j : evens_idx)
+        if(i>=prev) continue;
+        if(i == 0){prev = i; continue;}
+        ll power = 1LL<<i;
+        for (int j = 0;j<n;j++)
         {
-            if(a[j] % power == 0){
-                a[j] += pow(2,i-1); 
+            if(i>0 && a[j] % power == 0){
+                a[j] += (1LL<<(i-1)); 
             }
         }
+        prev = i;
     }
     print(a);    
 }
