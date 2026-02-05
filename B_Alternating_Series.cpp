@@ -23,32 +23,22 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
-void f() {
-    int n;
-    cin >> n;
+void f()
+{
+    int n;cin>>n;
+    vector<int>v;
 
-    vector<ll> a(n+1), pref(n+1,0);
-    for(int i = 1; i <= n; i++){
-        cin >> a[i];
-        pref[i] = pref[i-1] + a[i];
+    while(n>1){
+        v.push_back(-1);
+        n--;
+        if(n>1)v.push_back(3);
+        n--;
     }
+    if(v.back() == -1) v.push_back(2);
+    else v.push_back(-1);
 
-    ll sum = pref[n];
-    ll ans = sum;
-
-    ll mini = 0;
-
-    for(int r = 1; r <= n; r++){
-        ll cur = 1LL * r * (r + 1) - pref[r];
-        ans = max(ans, sum + cur - mini);
-
-        ll prev = 1LL * (r) * (r + 1) - pref[r];
-        mini = min(mini, prev);
-    }
-
-    cout << ans <<endl;
+    print(v);
 }
-
 
 int main()
 {
