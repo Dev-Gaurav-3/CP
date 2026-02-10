@@ -23,32 +23,28 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
-void f()
-{
-    int n,x,y;cin>>n>>x>>y;
-    vector<int>v;input(v,n);
-    int max_idx = 0;
-    int max_rem = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if((v[i]%x) > max_rem){max_idx = i;max_rem = (v[i]%x);}
-    }
-    ll sum = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if(i == max_idx){
-            sum += v[i];
-        }
-        else{
-            int k = v[i]/x;
-            sum += (y*k);
-        }
+void f() {
+    int n;
+    ll x, y;
+    cin >> n >> x >> y;
+
+    vector<ll> a(n), cnt(n);input(a,n);
+
+
+    ll total = 0;
+    for (int i = 0; i < n; i++) {
+        cnt[i] = a[i] / x;
+        total += cnt[i] * y;
     }
 
-    cout<< sum <<endl;
-    
-    
+    ll ans = 0;
+    for (int i = 0; i < n; i++) {
+        ans = max(ans, a[i] + total - cnt[i] * y);
+    }
+
+    cout << ans <<endl;
 }
+
 
 int main()
 {
