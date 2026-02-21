@@ -31,13 +31,19 @@ void f()
     vector<int>v;input(v,n);
     vector<int>temp = v;
     sort(temp.begin(),temp.end());
-    int mx = INT_MIN;
+    if(temp == v){cout<< -1 <<endl;return ;};
+    int mx = INT_MAX;
+
     for (int i = 0; i < n; i++)
     {
-        mx = max(mx,abs(v[i] - temp[i]));
+        if (v[i] != temp[i])
+        {
+            int val = max(v[i] - temp[0], temp[n-1] - v[i]);
+            mx = min(mx, val);
+        }
     }
     
-    cout<<((mx == 0) ? -1 : mx )<< endl;
+    cout<< mx << endl;
 }
 
 int main()
