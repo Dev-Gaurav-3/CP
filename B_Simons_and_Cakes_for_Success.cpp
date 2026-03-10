@@ -25,26 +25,28 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
-void f() {
-    int n,l,r;
-    cin >> n >> l >> r;
-
-    vector<int> a;
-
-    for(int i=1;i<=n;i++){
-        int x = ((l+i-1)/i)*i;
-
-        if(x>r){
-            cout<<"NO\n";
-            return;
-        }
-
-        a.push_back(x);
+void f()
+{
+    int n;cin>>n;
+    unordered_set<int>factors;
+    while (n % 2 == 0) {
+        factors.insert(2);
+        n /= 2;
     }
 
-    cout<<"YES\n";
-    for(int x:a) cout<<x<<" ";
-    cout<<"\n";
+    for (int i = 3; i*i <= n; i += 2) {
+        while (n % i == 0) {
+            factors.insert(i);
+            n /= i;
+        }
+    }
+    if (n > 2) factors.insert(n);
+    ll prod = 1;
+    for (auto it : factors)
+    {
+        prod *= it;
+    }
+    cout << prod << endl;
 }
 
 int main()

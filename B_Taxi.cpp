@@ -25,33 +25,23 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
-void f() {
-    int n,l,r;
-    cin >> n >> l >> r;
-
-    vector<int> a;
-
-    for(int i=1;i<=n;i++){
-        int x = ((l+i-1)/i)*i;
-
-        if(x>r){
-            cout<<"NO\n";
-            return;
-        }
-
-        a.push_back(x);
+void f()
+{
+    int n;cin>>n;
+    unordered_map<int,int>mp;
+    for (int i = 0; i < n; i++)
+    {
+        int x;cin>>x;
+        mp[x]++;
     }
 
-    cout<<"YES\n";
-    for(int x:a) cout<<x<<" ";
-    cout<<"\n";
 }
 
 int main()
 {
     fastio();
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
     {
         f();

@@ -25,26 +25,33 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
-void f() {
-    int n,l,r;
-    cin >> n >> l >> r;
-
-    vector<int> a;
-
-    for(int i=1;i<=n;i++){
-        int x = ((l+i-1)/i)*i;
-
-        if(x>r){
-            cout<<"NO\n";
-            return;
+vector<int> primeFactors(int n){
+    vector<int> pf;
+    for(int i = 2; i * i <= n; i++){
+        while(n % i == 0){
+            pf.push_back(i);
+            n /= i;
         }
-
-        a.push_back(x);
     }
+    if(n > 1) pf.push_back(n);
+    return pf;
+}
 
-    cout<<"YES\n";
-    for(int x:a) cout<<x<<" ";
-    cout<<"\n";
+void f()
+{
+    int a,b;cin>>a>>b;
+    vector<int>primes = primeFactors(b);
+    int mx = 0;
+    for (int i = 0; i < primes.size(); i++)
+    {
+        int calc = a*primes[i] + (b/primes[i]);
+        if(!(calc&1)){
+            mx = max(mx,calc);
+        }
+    }
+    cout << ((mx == 0)? -1:mx) << endl;
+
+    
 }
 
 int main()

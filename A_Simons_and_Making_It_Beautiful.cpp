@@ -25,26 +25,25 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
-void f() {
-    int n,l,r;
-    cin >> n >> l >> r;
-
-    vector<int> a;
-
-    for(int i=1;i<=n;i++){
-        int x = ((l+i-1)/i)*i;
-
-        if(x>r){
-            cout<<"NO\n";
-            return;
-        }
-
-        a.push_back(x);
+void f()
+{
+    int n;cin>>n;
+    vector<int>v(n+1);for(int i = 1;i<=n;i++)cin>>v[i];
+    if(n == 1){
+        cout << v[1] << endl;
+        return;
     }
-
-    cout<<"YES\n";
-    for(int x:a) cout<<x<<" ";
-    cout<<"\n";
+    for (int i = 1; i <= n; i++)
+    {
+        if(v[i] == n) swap(v[1],v[i]);
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        cout << v[i] << " ";
+    }
+    cout << endl;
+    
+    
 }
 
 int main()
