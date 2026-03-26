@@ -27,24 +27,21 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n,k;cin>>n>>k;
-    vector<ll>v,pref(n+1,0);input(v,n);
-    sort(v.begin(), v.end());
-    ll ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        pref[i+1] = pref[i] + v[i];
-    }
-    for (int i = 0; i <=k; i++)
-    {
-        ll lsum = pref[2*i];
-        ll rsum = pref[n] - pref[n - (k-i)];
-        ll remaining = pref[n] - lsum - rsum;
+    int n;cin>>n;
+    vector<int>v;input(v,n);
+    ll curr = v[0],maxi = v[0];
 
-        ans = max(ans,remaining);
+    for (int i = 1; i < n; i++)
+    {
+        if (abs(v[i] % 2) != abs(v[i-1] % 2))
+            curr = max(curr + v[i], (ll)v[i]);
+        else
+            curr = v[i];
+
+        maxi = max(maxi, curr);
     }
-    
-    cout << ans << endl;
+
+    cout << maxi << endl;
 }
 
 int main()
