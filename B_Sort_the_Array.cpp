@@ -28,17 +28,21 @@ void input(vector<T> &v, int n)
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
+    vector<int>v,sorted;input(v,n);
+    sorted = v;
+    sort(sorted.begin(),sorted.end());
+    if(sorted == v){
+        cout << "yes\n 1 1" << endl;
+    }
 
-
-
+    
 }
 
 int main()
 {
     fastio();
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
     {
         f();

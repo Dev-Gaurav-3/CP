@@ -27,11 +27,18 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
+    int n,x,y;cin>>n>>x>>y;
+    ll A = n/x,B = n/y;
+    ll lcm = (x * y) /__gcd(x, y);
+    ll C = n / lcm;
+    ll onlyX = A-C;
+    ll onlyY = B- C;
 
+    ll sumX = onlyX* (2 *n- onlyX +1) / 2;
+    ll sumY = onlyY *(onlyY+ 1)/2;
 
-
+    cout << sumX - sumY << endl;
+    
 }
 
 int main()

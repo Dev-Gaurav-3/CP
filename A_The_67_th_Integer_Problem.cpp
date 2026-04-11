@@ -28,10 +28,7 @@ void input(vector<T> &v, int n)
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
-
-
-
+    cout << 67 << endl;
 }
 
 int main()

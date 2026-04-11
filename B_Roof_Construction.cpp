@@ -28,10 +28,16 @@ void input(vector<T> &v, int n)
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
-
-
-
+    for (int i = 1; i < n; i+= 2)
+    {
+        cout << i << " ";
+    }
+    for (int i = 0; i < n; i += 2)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+    
 }
 
 int main()

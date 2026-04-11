@@ -27,10 +27,14 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
-
-
+    int n,ans = 0;cin>>n;
+    for (int i = 1; i <= n; i++) {
+        int x;cin >> x;
+        if (x <= i) {
+            ans++;
+        }
+    } 
+    cout << ans << endl;
 
 }
 

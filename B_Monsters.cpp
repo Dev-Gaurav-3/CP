@@ -25,13 +25,25 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
-void f()
-{
-    int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
+void f() {
+    int n, k;cin >> n >> k;
+    vector<pair<int,int>> v;
 
-
-
+    for (int i = 0; i < n; i++) {
+        int x; cin >> x;
+        int rem = x % k;
+        if (rem == 0) rem = k;
+        v.push_back({rem, i});
+    }
+    sort(v.begin(), v.end(), [](pair<int,int> a, pair<int,int> b) {
+        if (a.first == b.first)
+            return a.second < b.second;
+        return a.first > b.first;
+    });
+    for (auto &x : v) {
+        cout << x.second + 1 << " ";
+    }
+    cout << endl;
 }
 
 int main()

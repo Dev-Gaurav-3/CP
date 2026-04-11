@@ -28,10 +28,19 @@ void input(vector<T> &v, int n)
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
-
-
-
+    vector<int>v;input(v,n);
+    sort(v.begin(),v.end());
+    ll ways = 0;
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < i; j++) {
+        int x = max(v[n - 1], 2 * v[i]) - v[i] - v[j];
+        int bin = upper_bound(v.begin(), v.begin() + j, x) - v.begin();
+        
+        ways += j -bin;
+      }
+    }
+    
+    cout << ways << endl;
 }
 
 int main()

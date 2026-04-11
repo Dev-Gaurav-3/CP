@@ -28,9 +28,23 @@ void input(vector<T> &v, int n)
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
+    vector<ll>v;input(v,n);
+    sort(v.begin(),v.end());
+    ll x = v[0] * v[n-1];
+    vector<ll> divisors;
+    for(ll i = 2; i * i <= x; i++)
+    {
+        if(x % i == 0)
+        {
+            divisors.push_back(i);
+            if(i != x / i) divisors.push_back(x / i);
+        }
+    }
 
+    sort(divisors.begin(), divisors.end());
 
+    if(divisors == v) cout << x << endl;
+    else cout << -1 << endl;
 
 }
 

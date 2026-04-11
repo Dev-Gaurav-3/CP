@@ -27,11 +27,17 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
-
-
-
+    int n = 7;
+    vector<int>v;input(v,n);
+    sort(v.begin(),v.end());
+    int sum = 0;
+    for (int i = 0; i < n-1; i++)
+    {
+        sum += v[i];
+    }
+    sum -= v[n-1];
+    cout << 0-sum << endl;
+    
 }
 
 int main()

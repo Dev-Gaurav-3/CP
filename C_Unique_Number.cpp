@@ -25,13 +25,29 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
+int digitSum(int x){
+    if(x<10) return x;
+    int num1 = x%10;
+    x /= 10;
+    return num1+x;
+}
+
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
-
-
-
+    for (int x = 1; x <= 100; x++)
+    {
+         if(x%11 == 0){
+            continue;
+        }
+        if(digitSum(x) == n){
+            cout << x << endl;
+            return ;
+        }
+    }
+    
+    cout << -1 << endl;
+    return ;
 }
 
 int main()

@@ -28,10 +28,26 @@ void input(vector<T> &v, int n)
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
+    vector<int>v;input(v,n);
 
+    ll sum = accumulate(v.begin(), v.end(), 0LL),ans = 0 ;
 
+    if ((2 * sum) % n != 0) { // If mean is not integer → impossible
+        return0;
+    }
 
+    int target = (2 * sum) / n;
+
+    sort(v.begin(), v.end());
+    for (int i = 0; i < n; i++)
+    {
+        int need = target - v[i];
+        auto l = lower_bound(v.begin() + i + 1, v.end(), need);
+        auto r = upper_bound(v.begin() + i + 1, v.end(), need);
+        ans += (r - l);
+    }
+
+    cout << ans << endl;
 }
 
 int main()

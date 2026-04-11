@@ -27,11 +27,16 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
+    ll a,b;cin>>a>>b;
+    ll cnt = 0,x = 9;
+    while (x<=b)
+    {
+        cnt++;
+        x = x*10+9;
+    }
 
-
-
+    cout << a*cnt << endl;
+    
 }
 
 int main()

@@ -28,10 +28,24 @@ void input(vector<T> &v, int n)
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
-
-
-
+    vector<int>v;input(v,n);
+    unordered_map<int,int>mp;
+    for (int i = 0; i < n; i++)
+    {
+        mp[v[i]] = i;
+    }
+    int maxi = -1;
+    for (int i = 1; i <= 1000; i++)
+    {
+        for (int j = 1; j <= 1000; j++)
+        {
+            if (mp.count(i) && mp.count(j) && __gcd(i, j) == 1)
+            {
+                maxi = max(maxi, mp[i]+mp[j]+2);
+            }
+        }
+    }
+    cout << maxi << endl;   
 }
 
 int main()

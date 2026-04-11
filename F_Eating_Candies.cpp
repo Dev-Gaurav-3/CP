@@ -27,11 +27,33 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
+    int n; cin >> n;
+    vector<int> v(n);
+    for(int i = 0; i < n; i++) cin >> v[i];
 
+    int l = 0, r = n - 1,maxi = 0;;
+    ll lSum = 0, rSum = 0;
 
+    while (l <= r)
+    {
+        if (lSum <= rSum)
+        {
+            lSum += v[l];
+            l++;
+        }
+        else
+        {
+            rSum += v[r];
+            r--;
+        }
 
+        if (lSum == rSum)
+        {
+            maxi = l + (n - 1 - r);
+        }
+    }
+
+    cout << maxi << endl;
 }
 
 int main()

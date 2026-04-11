@@ -28,10 +28,14 @@ void input(vector<T> &v, int n)
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
-
-
-
+    vector<int> p(3*n);
+    int small = 1,large = 3*n;
+    for (int i = 0; i < n; i++) {
+        p[3*i] = small++;
+        p[3*i + 1] = large--;
+        p[3*i + 2] = large--;
+    }
+    print(p);
 }
 
 int main()

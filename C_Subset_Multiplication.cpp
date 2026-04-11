@@ -25,13 +25,23 @@ void input(vector<T> &v, int n)
         cin >> x;
 }
 
+int lcm(int a,int b){
+    return (a/__gcd(a,b))*b;
+}
+
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
+    vector<int>b;input(b,n);
+    ll ans = 1;
+    for (int i = 0; i < n-1; i++)
+    {
+        int g = b[i]/__gcd(b[i],b[i+1]);
+        ans = lcm(ans,g);
+    }
 
-
-
+    cout << ans << endl;   
+    
 }
 
 int main()

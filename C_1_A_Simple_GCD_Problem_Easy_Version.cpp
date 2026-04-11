@@ -24,15 +24,32 @@ void input(vector<T> &v, int n)
     for (auto &x : v)
         cin >> x;
 }
+ll lcm(ll a, ll b) {
+    if (a == 0 || b == 0) return 0;
+    return (a / __gcd(a, b)) * b;
+}
 
 void f()
 {
-    int n;cin>>n;
-    vector<int>a,b,c;input(a,n),input(b,n);
+    int n;cin >> n;
+    vector<ll> a,b,g(n-1);input(a,n);input(b,n);
+    
+    for (int i = 0; i < n - 1; i++) {
+        g[i] = __gcd(a[i], a[i + 1]); // as gcd of long subarrays is equal to gcd of adjacent 
+    }
 
+    int ans = 0;
+    ll x;
+    for (int i = 0; i < n; ++i) {
+        if (i == 0) x = g[0];
+        else if (i == n - 1) x = g[n - 2]; 
+        else x = lcm(g[i - 1], g[i]);
 
+        if (x < a[i]) ans++;
+    }
 
-}
+    cout << ans << endl;
+}    
 
 int main()
 {
