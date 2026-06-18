@@ -25,29 +25,16 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;
-    vector<int>a,b;input(a,n);input(b,n);
-    int f = 1,s = n;
-    for (int i = 0; i < n; i++)
+    int n,x;cin>>n>>x;
+    ll ans = 0;
+    vector<ll>v;input(v,n);
+    sort(v.begin(),v.end());
+    for (int i = 1; i < n; i++) v[i] += v[i-1];
+    for (int i = 0; i < n;i++)
     {
-        if(a[i] != b[i]) {
-            f = i;
-            break;
-        }
+        ans += max(0LL,(ll)(x-v[i]+ i+1)/(i+1));
     }
-
-    for (int i = n - 1; i >= 0; i--)
-    {
-        if(a[i] != b[i]) {
-            s = i;
-            break;
-        }
-    }
-    while (f> 0 && b[f - 1]<= b[f]) f--;
-    while (s+1 <n &&b[s] <= b[s + 1]) s++;
-
-    cout << f+1 << " " << s+1 << endl;
-    
+    cout << ans << endl;
 }
 
 int main()

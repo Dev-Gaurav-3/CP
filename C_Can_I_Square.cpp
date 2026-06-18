@@ -26,28 +26,11 @@ void input(vector<T> &v, int n)
 void f()
 {
     int n;cin>>n;
-    vector<int>a,b;input(a,n);input(b,n);
-    int f = 1,s = n;
-    for (int i = 0; i < n; i++)
-    {
-        if(a[i] != b[i]) {
-            f = i;
-            break;
-        }
-    }
-
-    for (int i = n - 1; i >= 0; i--)
-    {
-        if(a[i] != b[i]) {
-            s = i;
-            break;
-        }
-    }
-    while (f> 0 && b[f - 1]<= b[f]) f--;
-    while (s+1 <n &&b[s] <= b[s + 1]) s++;
-
-    cout << f+1 << " " << s+1 << endl;
-    
+    vector<int>v;input(v,n);
+    ll sum = accumulate(v.begin(),v.end(),0LL);
+    ll sqr = (ll)sqrt(sum);
+    if(sqr*sqr == sum) returnYES;
+    returnNO;
 }
 
 int main()

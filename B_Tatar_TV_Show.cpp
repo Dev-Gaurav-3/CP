@@ -25,29 +25,20 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;
-    vector<int>a,b;input(a,n);input(b,n);
-    int f = 1,s = n;
-    for (int i = 0; i < n; i++)
-    {
-        if(a[i] != b[i]) {
-            f = i;
+    int n, k;cin>>n>>k;
+    string s;cin>>s;
+    bool flag = true;
+    for (int i = 0; i < k; i++) {
+        int ones = 0;
+        for (int j = i; j < n; j += k) {
+            if (s[j] == '1') ones++;
+        }
+        if (ones&1) {
+            flag = false;
             break;
         }
     }
-
-    for (int i = n - 1; i >= 0; i--)
-    {
-        if(a[i] != b[i]) {
-            s = i;
-            break;
-        }
-    }
-    while (f> 0 && b[f - 1]<= b[f]) f--;
-    while (s+1 <n &&b[s] <= b[s + 1]) s++;
-
-    cout << f+1 << " " << s+1 << endl;
-    
+    cout << (flag ? "YES" : "NO") << '\n';
 }
 
 int main()

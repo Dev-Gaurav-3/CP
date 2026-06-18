@@ -25,36 +25,32 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;
-    vector<int>a,b;input(a,n);input(b,n);
-    int f = 1,s = n;
-    for (int i = 0; i < n; i++)
-    {
-        if(a[i] != b[i]) {
-            f = i;
-            break;
-        }
+    int n,q;cin>>n>>q;
+    vector<int> pos(51, -1);
+
+    for (int i = 1; i <= n; i++) {
+        int x;cin >> x;
+        if (pos[x] == -1) pos[x] = i;
     }
 
-    for (int i = n - 1; i >= 0; i--)
-    {
-        if(a[i] != b[i]) {
-            s = i;
-            break;
+    while (q--) {
+        int x;cin >> x;
+        int p = pos[x];
+        cout << p << " ";
+        for (int i = 1; i <= 50; i++) {
+            if (pos[i] < p)
+                pos[i]++;
         }
+        pos[x] = 1;
     }
-    while (f> 0 && b[f - 1]<= b[f]) f--;
-    while (s+1 <n &&b[s] <= b[s + 1]) s++;
-
-    cout << f+1 << " " << s+1 << endl;
-    
+    cout << endl;
 }
 
 int main()
 {
     fastio();
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
     {
         f();

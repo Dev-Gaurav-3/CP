@@ -25,29 +25,32 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;
-    vector<int>a,b;input(a,n);input(b,n);
-    int f = 1,s = n;
-    for (int i = 0; i < n; i++)
-    {
-        if(a[i] != b[i]) {
-            f = i;
-            break;
-        }
-    }
-
-    for (int i = n - 1; i >= 0; i--)
-    {
-        if(a[i] != b[i]) {
-            s = i;
-            break;
-        }
-    }
-    while (f> 0 && b[f - 1]<= b[f]) f--;
-    while (s+1 <n &&b[s] <= b[s + 1]) s++;
-
-    cout << f+1 << " " << s+1 << endl;
+    ll a,b,x;cin>>a>>b>>x;
     
+    if(a == b) return0;
+    
+    vector<pair<ll,int>>v1,v2;
+    ll curr = a,op = 0;
+    while (true) {
+        v1.push_back({curr, op});
+        if (curr == 0 ) break;
+        op++;curr /= x;
+    }
+    curr = b;
+    op = 0;
+
+    while (true) {
+        v2.push_back({curr, op} );
+        if (curr ==0) break;
+        op++;curr /= x;
+    }
+    ll ans = INT_MAX;
+    for (auto &[i, op1]: v1) {
+        for (auto &[j, op2]: v2) {
+            ans = min(ans,op1+op2 +abs(i - j));
+        }
+    }
+    cout << ans << endl;
 }
 
 int main()
