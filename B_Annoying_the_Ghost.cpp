@@ -25,19 +25,13 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;vector<int>v;input(v,n);
+    int n;cin>>n;vector<int>a,b;input(a,n);input(b,n);
 
-    int sum = accumulate(v.begin(),v.end(),0);
+    sort(a.begin(),a.end());
+    sort(b.begin(),b.end());
 
-    for (int i = 0; i < n; i++)
-    {
-        int temp = sum;
-        temp -= v[i];
-        if((temp&1) && (v[i]&1)) returnYES;
-        if(!(temp&1) && !(v[i]&1)) returnYES;
-    }
-    
-    returnNO;
+    print(a);
+    print(b);
 }
 
 int main()

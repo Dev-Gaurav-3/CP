@@ -27,17 +27,12 @@ void f()
 {
     int n;cin>>n;vector<int>v;input(v,n);
 
-    int sum = accumulate(v.begin(),v.end(),0);
-
     for (int i = 0; i < n; i++)
     {
-        int temp = sum;
-        temp -= v[i];
-        if((temp&1) && (v[i]&1)) returnYES;
-        if(!(temp&1) && !(v[i]&1)) returnYES;
+        cout << n-v[i]+1 << " ";
     }
+    cout<< "\n";
     
-    returnNO;
 }
 
 int main()

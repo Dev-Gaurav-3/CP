@@ -25,19 +25,21 @@ void input(vector<T> &v, int n)
 
 void f()
 {
-    int n;cin>>n;vector<int>v;input(v,n);
-
-    int sum = accumulate(v.begin(),v.end(),0);
+    int n,sum=0;cin>>n;
+    vector<int>v;input(v,n);
 
     for (int i = 0; i < n; i++)
     {
-        int temp = sum;
-        temp -= v[i];
-        if((temp&1) && (v[i]&1)) returnYES;
-        if(!(temp&1) && !(v[i]&1)) returnYES;
+        for (int j = i+1; j < n; j++)
+        {
+            if(v[j] > v[i]){
+                v[j] = v[i];
+                break;
+            }
+        }
+        sum += v[i];
     }
-    
-    returnNO;
+    cout << sum << endl;
 }
 
 int main()
