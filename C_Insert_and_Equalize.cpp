@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define fastio() ios::sync_with_stdio(false);cin.tie(0);cout.tie(0)
+#define ll long long
+#define MOD 1000000007
+
+#define returnNO  {std::cout << "NO"  << std::endl; return;}
+#define returnYES {std::cout << "YES" << std::endl; return;}
+#define return1 {std::cout << "1" << std::endl; return;}
+#define return0 {std::cout << "0" << std::endl; return;}
+template <typename T>
+void print(const vector<T> &v)
+{
+    for (auto &x : v) cout << x << " ";
+    cout << "\n";
+}
+
+template <typename T>
+void input(vector<T> &v, int n)
+{
+    v.resize(n);
+    for (auto &x : v) cin >> x;
+}
+
+void f()
+{
+    int n;cin>>n;vector<ll>v,temp;input(v,n);
+    if(n == 1) return1;
+    sort(v.begin(),v.end());
+    for (int i = 1; i < n; i++)
+    {
+        temp.push_back(v[i] - v[i-1]);
+    }
+    ll gcd = 0;
+    for (auto x : temp) gcd = __gcd(gcd, x);
+    if (gcd == 0) return1;
+    ll mx = v[n-1],ans = 0;
+
+    for (int i = 0; i < n; i++){
+        ans += (mx - v[i]) / gcd;
+    }
+
+    set<ll> st(v.begin(), v.end());
+
+    ll cur = mx - gcd;
+    while (st.count(cur)){
+        cur -= gcd;
+    }
+
+    ans += (mx -cur)/gcd;
+    cout << ans << endl;
+}
+
+int main()
+{
+    fastio();
+    int t = 1;
+    cin >> t;
+    while (t--)
+    {
+        f();
+    }
+    return 0;
+}
